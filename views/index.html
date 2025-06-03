@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Optimizer - Enhance Your AI Interactions</title>
+    <meta name="description" content="Optimize your AI prompts for better results with real-time analysis and enhancement suggestions.">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🤖 AI Prompt Optimizer</h1>
+                <p class="tagline">Transform your prompts for better AI interactions</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Optimize Your AI Prompts in Real-Time</h2>
+                <p class="hero-description">
+                    Get instant analysis and enhancement suggestions to improve your AI interactions. 
+                    Our tool analyzes clarity, specificity, context, and structure to help you communicate better with AI.
+                </p>
+            </section>
+
+            <!-- Main Application -->
+            <section class="app-section">
+                <div class="app-container">
+                    <!-- Input Section -->
+                    <div class="input-section">
+                        <div class="input-header">
+                            <h3>Enter Your Prompt</h3>
+                            <span class="character-count">0 / 5000</span>
+                        </div>
+                        <textarea 
+                            id="promptInput" 
+                            class="prompt-input" 
+                            placeholder="Type your prompt here... For example: 'Write a story about a robot'"
+                            maxlength="5000"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button id="analyzeBtn" class="btn btn-primary">Analyze Prompt</button>
+                            <button id="enhanceBtn" class="btn btn-secondary" disabled>Enhance Prompt</button>
+                            <button id="clearBtn" class="btn btn-outline">Clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Results -->
+                    <div id="analysisResults" class="analysis-section" style="display: none;">
+                        <h3>Analysis Results</h3>
+                        
+                        <!-- Overall Score -->
+                        <div class="score-container">
+                            <div class="overall-score">
+                                <div class="score-circle">
+                                    <svg class="score-ring" width="120" height="120">
+                                        <circle class="score-ring-background" cx="60" cy="60" r="54"></circle>
+                                        <circle id="scoreRingProgress" class="score-ring-progress" cx="60" cy="60" r="54"></circle>
+                                    </svg>
+                                    <div class="score-text">
+                                        <span id="overallScore" class="score-number">0</span>
+                                        <span class="score-label">Overall</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Detailed Scores -->
+                            <div class="detailed-scores">
+                                <div class="score-item">
+                                    <div class="score-header">
+                                        <span class="score-name">Clarity</span>
+                                        <span id="clarityScore" class="score-value">0/25</span>
+                                    </div>
+                                    <div class="score-bar">
+                                        <div id="clarityProgress" class="score-progress"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="score-item">
+                                    <div class="score-header">
+                                        <span class="score-name">Specificity</span>
+                                        <span id="specificityScore" class="score-value">0/25</span>
+                                    </div>
+                                    <div class="score-bar">
+                                        <div id="specificityProgress" class="score-progress"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="score-item">
+                                    <div class="score-header">
+                                        <span class="score-name">Context</span>
+                                        <span id="contextScore" class="score-value">0/25</span>
+                                    </div>
+                                    <div class="score-bar">
+                                        <div id="contextProgress" class="score-progress"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="score-item">
+                                    <div class="score-header">
+                                        <span class="score-name">Structure</span>
+                                        <span id="structureScore" class="score-value">0/25</span>
+                                    </div>
+                                    <div class="score-bar">
+                                        <div id="structureProgress" class="score-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Suggestions -->
+                        <div id="suggestions" class="suggestions-container">
+                            <h4>Improvement Suggestions</h4>
+                            <div id="suggestionsList" class="suggestions-list">
+                                <!-- Suggestions will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Prompt -->
+                    <div id="enhancedResults" class="enhanced-section" style="display: none;">
+                        <h3>Enhanced Prompt</h3>
+                        <div class="enhanced-container">
+                            <div class="prompt-comparison">
+                                <div class="original-prompt">
+                                    <h4>Original</h4>
+                                    <div id="originalPrompt" class="prompt-text"></div>
+                                </div>
+                                <div class="enhanced-prompt">
+                                    <h4>Enhanced</h4>
+                                    <div id="enhancedPrompt" class="prompt-text enhanced"></div>
+                                    <button id="copyEnhanced" class="btn btn-small">Copy Enhanced</button>
+                                </div>
+                            </div>
+                            
+                            <div id="enhancementDetails" class="enhancement-details">
+                                <h4>Applied Enhancements</h4>
+                                <ul id="enhancementsList" class="enhancements-list">
+                                    <!-- Enhancement details will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>Example Transformations</h3>
+                <div id="examplesContainer" class="examples-container">
+                    <!-- Examples will be loaded here -->
+                </div>
+                <button id="loadExamples" class="btn btn-outline">Load Examples</button>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h3>How It Works</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Clarity Analysis</h4>
+                        <p>Identifies action words and removes vague language for clearer instructions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Specificity Check</h4>
+                        <p>Ensures your prompts include concrete details and format specifications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎭</div>
+                        <h4>Context Enhancement</h4>
+                        <p>Adds audience information and background context for better AI understanding.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏗️</div>
+                        <h4>Structure Optimization</h4>
+                        <p>Organizes your prompts with logical flow and clear formatting.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AI Prompt Optimizer. Built with research-backed prompt engineering principles.</p>
+        </div>
+    </footer>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Analyzing your prompt...</p>
+    </div>
+
+    <!-- Success notification -->
+    <div id="notification" class="notification" style="display: none;">
+        <span id="notificationText"></span>
+        <button id="notificationClose">&times;</button>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
